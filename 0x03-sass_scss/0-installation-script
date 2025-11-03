@@ -1,0 +1,63 @@
+```
+Sass (SCSS) Installation & Setup Guide
+======================================
+
+This guide outlines the steps to install and configure Sass for the project.
+The process uses npm to install Dart Sass as a development dependency.
+
+1. Project Setup
+----------------
+If package.json does not exist:
+   npm init -y
+
+Install the Sass compiler:
+   npm install sass --save-dev
+
+2. Directory Structure
+----------------------
+Ensure the file structure follows this pattern:
+
+project/
+|-- src/
+|   |-- styles/
+|   |   |-- main.scss    (Sass source code INPUT)
+|-- dist/
+|   |-- css/
+|   |   |-- main.css     (Compiled CSS OUTPUT)
+
+3. NPM Script Configuration
+---------------------------
+Add the following 'sass' script to the "scripts" section in the package.json:
+
+"scripts": {
+  "sass": "sass src/styles/main.scss dist/css/main.css --watch"
+}
+
+4. Running Sass
+---------------
+
+A. Development Mode (Continuous Watch)
+   Use this command during development to automatically compile CSS on every save.
+   The terminal must remain open while running.
+
+   npm run sass
+
+B. Production Build (Minified)
+   Use this command to create a compressed, final version of the CSS for deployment.
+   This runs once and exits.
+
+   sass src/styles/main.scss dist/css/main.min.css --style=compressed
+
+5. HTML Integration
+-------------------
+Always link to the compiled CSS output file (not the SCSS source) in the HTML:
+
+<link rel="stylesheet" href="dist/css/main.css" />
+
+
+Notes
+-----
+- The 'dist/css' directory is generated output and should not be modified manually.
+- SCSS features (variables, nesting, mixins) are fully supported.
+- Sass files starting with an underscore (e.g., _partial.scss) are considered partials and are not compiled on their own.
+```
